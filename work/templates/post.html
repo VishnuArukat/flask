@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<title>{{post.title}} {% if post.subtitle%}: {{post.subtitle}} {% endif %}</title>
+{% endblock head%}
+{% block content %}
+	<!-- header -->
+	<div id = 'header'>
+		<h1> {{post.title}}</h1>
+		{% if post.subtitle %}
+			<h2>{{post.subtitle}}</h2>
+		{% endif %}
+		<h3 id = 'date'>
+			<!-- filters are marked as the | like the safe html -->
+			{{ post.date|date}}
+		</h3>
+	 </div>
+	<!-- content -->
+	<div id = 'content'>
+		<!-- calling the html to get the content from the file safe is for safe pass to avoid running any scripts in the file  -->
+		{{ post.html|safe}}
+	</div>
+{% endblock content%}
